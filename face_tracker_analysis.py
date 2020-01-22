@@ -1,8 +1,5 @@
-# REF
-# https://www.pyimagesearch.com/2018/07/23/simple-object-tracking-with-opencv/
-
 # USAGE
-#python object_tracker.py --prototxt deploy.prototxt --model res10_300x300_ssd_iter_140000.caffemodel
+#python face_tracker_analysis.py -i /home/pi/Assets/pocopoco.mp4 -d MYRIAD -d_ag MYRIAD
 
 # import the necessary packages
 from pyimagesearch.centroidtracker import CentroidTracker
