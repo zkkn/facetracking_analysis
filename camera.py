@@ -63,12 +63,8 @@ class VideoCamera(object):
         if self.input_stream == 0 and flip_code is not None:
             self.frame = cv2.flip(self.frame, int(flip_code))
 
-        # face detectionの描画処理済みのframeが返ってくる
+        # face detection及びtrackingの描画処理済みのframeが返ってくる
         frame = self.detections.face_detection(self.frame, next_frame, is_age_gender_detection, self.ct)
-
-        # TODO: 
-        # ここにトラッキングの処理を書きたい
-
 
         # The first detected frame is None
         if frame is None:

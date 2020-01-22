@@ -29,21 +29,18 @@ def dump_json(_object_list):
 	encode_json_data = json.dump(results, fw)
 
 def main():
-	#TODO: update
 	args = argument_parser.build_argparser().parse_args()
 
 	devices = [args.device, args.device_age_gender]
     models = [args.model_face, args.model_age_gender]
 
 	if "CPU" in devices and args.cpu_extension is None:
-    print("\nPlease try to specify cpu extensions library path in demo's command line parameters using -l ""or --cpu_extension command line argument")
-    sys.exit(1)
+    	print("\nPlease try to specify cpu extensions library path in demo's command line parameters using -l ""or --cpu_extension command line argument")
+    	sys.exit(1)
 
 	detections = interactive_detection.Detections(
         devices, models, args.cpu_extension, args.plugin_dir,args.prob_threshold, args.prob_threshold_face)
-	#models = detections.models
 
-	# TODO: ここを書き直す
 	ct = CentroidTracker()
 	camera = VideoCamera(args.input, detections, args.no_v4l, ct)
 	# このframeにはすでに描画処理されているものだな

@@ -9,12 +9,6 @@ def build_argparser():
         required=True,
         type=str)
     parser.add_argument(
-        "-m_ss",
-        "--model_ssd",
-        help="Required. Path to an .xml file with a trained MobileNet-SSD model.",
-        type=str,
-        default=None)
-    parser.add_argument(
         "-m_fc",
         "--model_face",
         help="Optional. Path to an .xml file with a trained Age/Gender Recognition model.",

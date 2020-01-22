@@ -89,9 +89,6 @@ class Detections(Detectors):
         face_count = faces.shape[2]
         det_time_txt = "face_cnt:{} face:{:.3f} ms ".format(face_count,det_time * 1000)
 
-        #TODO: Trackingの処理をここに加える
-        # ----------- Start Tracking ---------- #
-
         # ----------- Start Face Analytics ---------- #
 
         face_id = 0
@@ -191,7 +188,7 @@ class Detections(Detectors):
             logger.debug("face_id:{} confidence:{}%".format(
                 face_id, round(face[2] * 100)))
 
-        # TODO:
+        # tracker processing
         # ここでトラッカーに突っ込んでる
         objects = ct.update(rects)
         # object_listもループの外部でグローバルに持ちたい

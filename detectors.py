@@ -149,10 +149,6 @@ class FaceDetection(BaseDetection):
         res = self.exec_net.requests[self.cur_request_id].outputs[
             self.out_blob]  # res's shape: [1, 1, 200, 7]
 
-        # TODO: ここにトラッキングの処理を書く
-        # trackingの関数を用意する
-        tracking(res, confidence)
-
         # Get rows whose confidence is larger than prob_threshold.
         # detected faces are also used by age/gender, emotion, landmark, head pose detection.
         faces = res[0][:, np.where(res[0][0][:, 2] > self.prob_threshold_face)]
