@@ -65,7 +65,7 @@ class Detections(Detectors):
         self.fps = "FPS: ??"
         self.prev_time = timer()
 
-    def face_detection(self, frame, next_frame, is_age_gender_detection):
+    def face_detection(self, frame, next_frame, is_age_gender_detection, ct):
 
         # ----------- Start Face Detection ---------- #
 
@@ -193,14 +193,13 @@ class Detections(Detectors):
 
         # TODO:
         # ここでトラッカーに突っ込んでる
-        # どうやったらインスタンス化をループの中でしないで住むか
         objects = ct.update(rects)
         # object_listもループの外部でグローバルに持ちたい
         # loop over the tracked objects
 		for (objectID, centroid) in objects.items():
 			# draw both the ID of the object and the centroid of the
 			# object on the output frame
-			object_list.append((objectID, centroid.tolist(), frame_number))
+			#object_list.append((objectID, centroid.tolist(), frame_number))
 			text = "ID {}".format(objectID)
 			cv2.putText(frame, text, (centroid[0] - 10, centroid[1] - 10),
 				cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)

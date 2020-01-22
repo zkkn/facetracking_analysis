@@ -20,7 +20,7 @@ basicConfig(
 resize_prop = (640, 480)
 
 class VideoCamera(object):
-    def __init__(self, input, detections, no_v4l):
+    def __init__(self, input, detections, no_v4l, ct):
         if input == 'cam':
             self.input_stream = 0
             if no_v4l:
@@ -46,6 +46,7 @@ class VideoCamera(object):
         logger.info("cap_pop:{}, frame_prop:{}".format(cap_prop, resize_prop))
 
         self.detections = detections
+        self.ct = ct
 
     def __del__(self):
         self.cap.release()
@@ -63,7 +64,7 @@ class VideoCamera(object):
             self.frame = cv2.flip(self.frame, int(flip_code))
 
         # face detectionの描画処理済みのframeが返ってくる
-        frame = self.detections.face_detection(self.frame, next_frame, is_age_gender_detection)
+        frame = self.detections.face_detection(self.frame, next_frame, is_age_gender_detection, self.ct)
 
         # TODO: 
         # ここにトラッキングの処理を書きたい

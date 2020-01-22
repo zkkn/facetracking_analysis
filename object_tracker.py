@@ -8,7 +8,6 @@
 from pyimagesearch.centroidtracker import CentroidTracker
 from imutils.video import VideoStream
 import numpy as np
-import argparse
 import json
 import imutils
 import time
@@ -45,7 +44,8 @@ def main():
 	#models = detections.models
 
 	# TODO: ここを書き直す
-	camera = VideoCamera(args.input, detections, args.no_v4l)
+	ct = CentroidTracker()
+	camera = VideoCamera(args.input, detections, args.no_v4l, ct)
 	# このframeにはすでに描画処理されているものだな
 	while True:
 		frame = camera.get_frame(flip_code, is_age_gender_detection)
